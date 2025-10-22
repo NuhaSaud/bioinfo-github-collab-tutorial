@@ -27,7 +27,6 @@ By the end of this workshop, participants will:
 - [Exercise 2: Daily Git Workflow](exercises/02-daily-operations.md) - 30 min
 
 ### Session 4: Collaboration (60 minutes)
-- [Chapter 5: Branching & Conflicts](docs/05-branching-conflicts.md) - 30 min
 - [Exercise 3: Conflict Simulation](exercises/03-conflict-simulation.md) - 30 min
 
 ## 🎒 Workshop Materials
