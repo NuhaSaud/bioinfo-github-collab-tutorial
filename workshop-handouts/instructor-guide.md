@@ -24,8 +24,6 @@ Bioinformatics students/researchers with mixed coding experience.
    - Branching model; pairs do conflict simulation and resolution.
 
 ## Logistics
-- Share setup script 30–60 min before:  
-  `curl -L <repo-raw-url>/setup/workshop-setup.sh | bash`
 - Ensure GitHub logins and internet.
 - Room layout: pairs; projector for quick demos.
 
