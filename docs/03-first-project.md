@@ -43,13 +43,14 @@ mkdir config scripts notebooks data results tests
 ```
 **Add data/samples.csv:**
 ```csv
-sample_id,condition,replicate,batch
-sample01,control,1,batch1
-sample02,control,2,batch1  
-sample03,control,3,batch2
-sample04,treatment,1,batch1
-sample05,treatment,2,batch1
-sample06,treatment,3,batch2
+sample_id	condition	replicate	batch
+sample01	control	    1	        batch1
+sample02	control	    2	        batch1
+sample03	control	    3	        batch2
+sample04	treatment	1	        batch1
+sample05	treatment	2	        batch1
+sample06	treatment	3	        batch2
+
 ```
 
 **Add scripts/quality_control.py:**
