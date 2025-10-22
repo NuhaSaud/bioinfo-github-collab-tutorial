@@ -37,8 +37,11 @@ my-rnaseq-analysis/
 ├── results/ # Output files
 └── tests/ # Code testing
 ```
-
-**Add config/samples.csv:**
+by running 
+```
+mkdir config scripts notebooks data results tests
+```
+**Add data/samples.csv:**
 ```csv
 sample_id,condition,replicate,batch
 sample01,control,1,batch1
@@ -104,7 +107,7 @@ def main():
     print("🧬 Starting RNA-seq Quality Control Analysis")
     
     # Load sample data
-    samples = load_samples("config/samples.csv")
+    samples = load_samples("data/samples.csv")
     if samples is None:
         return
     
@@ -170,10 +173,10 @@ git push origin main
 Let's make sure it works:
 ```bash
 # Create results directory
-mkdir results
+cd scripts
 
 # Test the script (it should work!)
-python scripts/quality_control.py
+python quality_control.py
 ```
 
 You should see output like:
