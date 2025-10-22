@@ -173,13 +173,10 @@ git push origin main
 
 Let's make sure it works:
 ```bash
-# Create results directory
-cd scripts
-
 # Test the script (it should work!)
 python quality_control.py
 ```
-
+You should see Errors go to https://colab.research.google.com/ then fix the code using Gemini then save the new version
 You should see output like:
 ```
 🧬 Starting RNA-seq Quality Control Analysis
