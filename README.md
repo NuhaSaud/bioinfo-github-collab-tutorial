@@ -40,10 +40,5 @@ By the end of this workshop, participants will:
 - [👨‍🏫 Instructor Guide](workshop-handouts/instructor-guide.md)
 - [✅ Day-of Checklist](workshop-handouts/instructor-checklist.md)
 
-## 🚀 Pre-Workshop Setup
 
-**Participants run this before workshop:**
-```bash
-curl -L https://raw.githubusercontent.com/NuhaSaud/bioinfo-github-collab-tutorial/main/setup/workshop-setup.sh | bash
-```
 Ready to master Git for bioinformatics? Let's begin! 🧬✨
