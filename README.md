@@ -13,14 +13,11 @@ This tutorial will teach you how to use Git as a version control tool for your b
 4. [Method 1: GitHub Desktop (Beginner-Friendly)](#method-1-github-desktop-beginner-friendly)
 5. [Method 2: Command Line Basics](#method-2-command-line-basics)
 6. [Method 3: VSCode Integration](#method-3-vscode-integration)
-7. [SSH Authentication Setup (Recommended)](#ssh-authentication-setup-recommended)
-8. [Essential Git Concepts](#essential-git-concepts)
-9. [Practical Examples with VSCode](#practical-examples-with-vscode)
-10. [Collaboration Workflows with VSCode](#collaboration-workflows-with-vscode)
-11. [Troubleshooting Common Issues in VSCode](#troubleshooting-common-issues-in-vscode)
-12. [Quick Reference Guide](#quick-reference-guide)
-13. [Additional Resources](#additional-resources)
-14. [Conclusion](#conclusion)
+7. [Essential Git Concepts](#essential-git-concepts)
+8. [Practical Examples with VSCode](#practical-examples-with-vscode)
+9. [SSH Authentication Setup (Recommended)](#ssh-authentication-setup-recommended)
+10. [Additional Resources](#additional-resources)
+11. [Conclusion](#conclusion)
 
 ---
 
@@ -849,7 +846,200 @@ git push
 - Manage issues and discussions
 
 ---
+## Essential Git Concepts
 
+### Repository (Repo)
+A folder that Git tracks. Contains:
+- Your files (protocols, data, documentation)
+- Hidden `.git` folder (Git's tracking information)
+
+### Commit
+A snapshot of your files at a specific time. Like clicking "Save" but with a description of what you changed.
+
+**Good commit messages for bioinformatics:**
+- ✅ "Add PCR protocol for COI amplification"
+- ✅ "Fix primer sequences in protocol"
+- ✅ "Update sample collection procedure"
+- ❌ "Changed stuff"
+- ❌ "Updates"
+
+### Branch
+A parallel version of your project. Useful for:
+- Testing new protocols
+- Collaborating on different sections
+- Experimenting without breaking the main version
+
+**Common branch names:**
+- `main` - Your stable, tested version
+- `draft-manuscript` - Working on a paper
+- `protocol-updates` - Improving procedures
+- `data-analysis` - Adding analysis methods
+
+### Remote
+The online copy of your repository (usually on GitHub). Allows:
+- Backup of your work
+- Sharing with collaborators
+- Access from multiple computers
+
+### Clone vs Fork
+
+#### Clone
+Making a copy of someone's repository to your computer
+```bash
+git clone git@github.com:username/bioinfo-protocols.git
+```
+
+#### Fork
+Making your own copy of someone's repository on GitHub (for contributing to open science projects)
+
+---
+
+## Quick Reference Guide
+
+### VSCode Git Cheat Sheet
+
+#### 🎯 Essential VSCode Git Shortcuts
+
+| Action | Shortcut | Alternative Method |
+|--------|----------|-------------------|
+| **Open Source Control** | `Ctrl+Shift+G` | Activity Bar → Source Control icon |
+| **Command Palette** | `Ctrl+Shift+P` | View → Command Palette |
+| **Quick Open** | `Ctrl+P` | File → Quick Open |
+| **Git Commands** | `Ctrl+Shift+P` → "Git:" | Source Control → "..." menu |
+| **Stage All Changes** | `Ctrl+Shift+A` | Source Control → "+" next to Changes |
+| **Commit** | `Ctrl+Enter` | Source Control → ✓ checkmark |
+| **Push/Pull** | `Ctrl+Shift+P` → "Git: Push/Pull" | Status bar sync button |
+
+#### 📁 VSCode Panel Navigation
+
+| Panel | Shortcut | Usage |
+|--------|----------|-------|
+| **Explorer** | `Ctrl+Shift+E` | File and folder management |
+| **Search** | `Ctrl+Shift+F` | Find across all files |
+| **Source Control** | `Ctrl+Shift+G` | Git operations |
+| **Extensions** | `Ctrl+Shift+X` | Install/manage extensions |
+| **Terminal** | `Ctrl+Shift+`` | Command line access |
+
+#### 🔄 Git Workflow in VSCode
+
+| Task | VSCode Method | Command |
+|------|---------------|---------|
+| **Initialize Repository** | Command Palette → "Git: Initialize Repository" | `git init` |
+| **Clone Repository** | Command Palette → "Git: Clone" | `git clone [url]` |
+| **Create Branch** | Status bar branch → "Create new branch" | `git checkout -b [name]` |
+| **Switch Branch** | Status bar branch → Select branch | `git checkout [branch]` |
+| **Stage Changes** | Source Control → Click `+` | `git add [file]` |
+| **Unstage Changes** | Source Control → Click `-` | `git reset [file]` |
+| **Commit Changes** | Source Control → Write message + `Ctrl+Enter` | `git commit -m "message"` |
+| **Push Changes** | Source Control → "Sync Changes" | `git push` |
+| **Pull Changes** | Source Control → "..." → "Pull" | `git pull` |
+
+#### 🔍 Viewing Git Information
+
+| Information | VSCode Location | Description |
+|-------------|-----------------|-------------|
+| **Current Branch** | Status bar (bottom-left) | Shows active branch name |
+| **File Status** | Explorer panel | M=Modified, U=Untracked, D=Deleted |
+| **Pending Changes** | Source Control badge | Number of uncommitted changes |
+| **Git History** | GitLens → File History | Commit history for current file |
+| **Blame Information** | GitLens inline annotations | Who changed each line |
+| **Repository Status** | Source Control panel | All changed files |
+
+#### 🌟 GitLens Features (Extension)
+
+| Feature | Access Method | Description |
+|---------|---------------|-------------|
+| **Blame Annotations** | Inline in editor | See author and date for each line |
+| **File History** | Right-click file → "GitLens: Show File History" | Visual commit history |
+| **Repository Graph** | Command Palette → "GitLens: Show Graph" | Visual branch structure |
+| **Compare Changes** | Command Palette → "GitLens: Compare References" | Compare branches/commits |
+| **Search Commits** | GitLens sidebar → Search | Find commits by message/author |
+
+#### 📝 Markdown Features for Documentation
+
+| Feature | Shortcut | Usage |
+|---------|----------|-------|
+| **Preview Markdown** | `Ctrl+Shift+V` | View formatted version |
+| **Side-by-side Preview** | `Ctrl+K V` | Edit and preview simultaneously |
+| **Document Outline** | `Ctrl+Shift+O` | Navigate to sections quickly |
+| **Bold Text** | `Ctrl+B` | **Bold formatting** |
+| **Italic Text** | `Ctrl+I` | *Italic formatting* |
+| **Insert Link** | `Ctrl+K` | [Link text](URL) |
+
+
+
+#### 📊 GitHub Integration (Extension)
+
+| Feature | Access Method | Description |
+|---------|---------------|-------------|
+| **View Pull Requests** | Activity Bar → GitHub icon | See open PRs |
+| **Create Pull Request** | Source Control → "Create Pull Request" | Direct PR creation |
+| **Review Changes** | GitHub panel → Select PR | Review and comment |
+| **View Issues** | GitHub panel → Issues tab | See assigned issues |
+| **Merge PR** | GitHub panel → Merge button | Complete PR workflow |
+
+#### 🎨 VSCode Themes for Git Work
+
+| Theme | Description | Best For |
+|-------|-------------|----------|
+| **Dark+ (default)** | High contrast, easy on eyes | Long coding sessions |
+| **Light+ (default)** | Clean, professional look | Documentation work |
+| **GitHub Dark** | Matches GitHub interface | Consistent experience |
+| **Monokai** | Popular programmer theme | Code and markdown |
+
+#### 🔍 Advanced Search and Navigation
+
+| Feature | Shortcut | Usage |
+|---------|----------|-------|
+| **Search in Files** | `Ctrl+Shift+F` | Find text across repository |
+| **Go to File** | `Ctrl+P` | Quick file opening |
+| **Go to Symbol** | `Ctrl+Shift+O` | Navigate to headings in markdown |
+| **Go to Line** | `Ctrl+G` | Jump to specific line number |
+| **Find and Replace** | `Ctrl+H` | Replace text in current file |
+
+#### 📱 VSCode Git Status Indicators
+
+| Indicator | Meaning | Location |
+|-----------|---------|----------|
+| **M** | Modified file | File Explorer |
+| **U** | Untracked file | File Explorer |
+| **D** | Deleted file | File Explorer |
+| **A** | Added file | File Explorer |
+| **C** | Conflicted file | Source Control |
+| **!** | Ignored file | File Explorer |
+| **Number badge** | Pending changes count | Activity Bar icon |
+
+### Command Line Cheat Sheet
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `git status` | Check what's changed | `git status` |
+| `git add` | Stage changes | `git add protocol.md` |
+| `git commit` | Save changes | `git commit -m "Add PCR protocol"` |
+| `git push` | Upload to GitHub | `git push` |
+| `git pull` | Download from GitHub | `git pull` |
+| `git branch` | List branches | `git branch` |
+| `git checkout` | Switch branches | `git checkout -b new-feature` |
+| `git merge` | Combine branches | `git merge feature-branch` |
+
+### SSH Quick Reference
+| Action | Command |
+|--------|---------|
+| Generate SSH key | `ssh-keygen -t ed25519 -C "email@uni.edu"` |
+| Test SSH | `ssh -T git@github.com` |
+| Clone with SSH | `git clone git@github.com:user/repo.git` |
+
+### GitHub Desktop Cheat Sheet
+| Action | How To |
+|--------|--------|
+| See changes | Changes tab shows modified files |
+| Stage files | Files are auto-staged |
+| Commit | Write message → Commit to main |
+| Push | Push origin button |
+| Pull | Fetch origin button |
+| Branch | Current branch dropdown → New branch |
+| Merge | Create pull request on GitHub |
+
+---
 ## SSH Authentication Setup (Recommended)
 
 ### Why Use SSH Instead of HTTPS?
@@ -1108,54 +1298,6 @@ ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 
 ---
 
-## Essential Git Concepts
-
-### Repository (Repo)
-A folder that Git tracks. Contains:
-- Your files (protocols, data, documentation)
-- Hidden `.git` folder (Git's tracking information)
-
-### Commit
-A snapshot of your files at a specific time. Like clicking "Save" but with a description of what you changed.
-
-**Good commit messages for bioinformatics:**
-- ✅ "Add PCR protocol for COI amplification"
-- ✅ "Fix primer sequences in protocol"
-- ✅ "Update sample collection procedure"
-- ❌ "Changed stuff"
-- ❌ "Updates"
-
-### Branch
-A parallel version of your project. Useful for:
-- Testing new protocols
-- Collaborating on different sections
-- Experimenting without breaking the main version
-
-**Common branch names:**
-- `main` - Your stable, tested version
-- `draft-manuscript` - Working on a paper
-- `protocol-updates` - Improving procedures
-- `data-analysis` - Adding analysis methods
-
-### Remote
-The online copy of your repository (usually on GitHub). Allows:
-- Backup of your work
-- Sharing with collaborators
-- Access from multiple computers
-
-### Clone vs Fork
-
-#### Clone
-Making a copy of someone's repository to your computer
-```bash
-git clone git@github.com:username/bioinfo-protocols.git
-```
-
-#### Fork
-Making your own copy of someone's repository on GitHub (for contributing to open science projects)
-
----
-
 ## Practical Examples with VSCode
 
 ### Example 1: Setting Up Your First Lab Protocol Repository in VSCode
@@ -1176,36 +1318,8 @@ Making your own copy of someone's repository on GitHub (for contributing to open
    - Select current folder
    - Notice `.git` folder appears (hidden by default)
 
-**Step 2: Configure VSCode for Git**
-1. **Install Essential Extensions**:
-   - Open Extensions panel (`Ctrl+Shift+X`)
-   - Install these extensions:
-     ```
-     GitLens — Git supercharged (by GitKraken)
-     Markdown All in One (by Yu Zhang)
-     Todo Tree (by Gruntfuggly)
-     GitHub Pull Requests and Issues (by GitHub)
-     ```
 
-2. **Configure VSCode Settings**:
-   - `Ctrl+Shift+P` → **"Preferences: Open Settings (JSON)"**
-   - Add these settings:
-   ```json
-   {
-       "git.autofetch": true,
-       "git.confirmSync": false,
-       "git.enableSmartCommit": true,
-       "git.suggestSmartCommit": true,
-       "gitlens.blame.inline": true,
-       "gitlens.currentLine.enabled": true,
-       "markdown.preview.breaks": true,
-       "files.autoSave": "afterDelay",
-       "files.autoSaveDelay": 1000,
-       "todo-tree.tree.showScanModeButton": true
-   }
-   ```
-
-**Step 3: Create Your First Protocol with VSCode Features**
+**Step 2: Create Your First Protocol with VSCode Features**
 
 1. **Create directory structure**:
    - **Explorer Panel** (`Ctrl+Shift+E`)
@@ -1312,772 +1426,6 @@ Making your own copy of someone's repository on GitHub (for contributing to open
 - Sync button (cloud icon) in status bar
 - No pending changes in Source Control panel
 
-### Example 2: Daily Protocol Management Workflow in VSCode
-
-#### Morning Routine: Sync and Review
-
-**Step 1: Open VSCode and Get Latest Changes**
-1. **Launch VSCode** with your protocol repository
-2. **Check for updates** (multiple methods):
-   - **Status Bar**: Click sync button (↻ icon)
-   - **Command Palette**: `Ctrl+Shift+P` → **"Git: Pull"**
-   - **Source Control**: Click "..." → **"Pull"**
-
-3. **Review what changed**:
-   - **GitLens Timeline**: Bottom panel shows recent commits
-   - **File Explorer**: Modified files show with `M` indicator
-   - **Source Control**: Shows if colleagues made changes
-
-**Step 2: Check Team TODOs and Issues**
-1. **Todo Tree Panel**:
-   - View panel on left sidebar (if Todo Tree extension installed)
-   - Shows all TODO, FIXME, REVIEW comments across files
-
-2. **GitHub Issues** (if extension installed):
-   - Activity Bar → GitHub icon
-   - See assigned issues and pull requests
-
-#### Working on a Protocol Update
-
-**Step 3: Create Feature Branch**
-1. **Current branch indicator**:
-   - Bottom-left status bar shows current branch (e.g., `main`)
-   - Click branch name to see branch options
-
-2. **Create new branch**:
-   - Click branch name → **"Create new branch..."**
-   - Name it: `update-dna-extraction-v2.2`
-   - Choose base branch: `main`
-   - VSCode automatically switches to new branch
-
-**Step 4: Edit Protocol with VSCode Features**
-
-Open `protocols/DNA-extraction/CTAB-method.md`:
-
-```markdown
-# CTAB DNA Extraction Protocol v2.2
-
-**Last Updated**: November 8, 2024  
-**Updated By**: Jane Smith  
-**Tested By**: Lab Team  
-**Status**: ✅ Validated
-
-## 🔬 Overview
-This protocol provides high-quality genomic DNA from plant tissue using CTAB buffer method.
-
-**Expected Time**: 3-4 hours  
-**Yield**: 50-200 ng/μL  
-**Purity**: A260/A280 = 1.8-2.0
-
-## 🧪 Materials and Equipment
-
-### Reagents
-- [ ] **CTAB Buffer (2X)** - See recipe in Appendix A
-  - Store at room temperature, stable 6 months
-  - ⚠️ **Warning**: Contains β-mercaptoethanol - use in hood
-- [ ] **Chloroform:Isoamyl alcohol (24:1)**
-  - Keep at 4°C, use within 1 month of opening
-- [ ] **Isopropanol** (≥99% pure)
-- [ ] **Ethanol (70%)**
-- [ ] **TE Buffer (pH 8.0)**
-
-### Equipment  
-- [ ] Water bath or heat block (60°C)
-- [ ] Centrifuge (≥12,000 RCF)
-- [ ] Micropipettes (10-1000 μL)
-- [ ] Vortex mixer
-- [ ] Liquid nitrogen dewar
-
-## 📋 Step-by-Step Protocol
-
-### Pre-Protocol Preparation (30 min)
-1. **Heat CTAB buffer** to 60°C in water bath
-2. **Chill materials**:
-   - Mortars and pestles in -20°C freezer
-   - Centrifuge to 4°C  
-   - Chloroform:isoamyl alcohol on ice
-3. **Label all tubes** with sample IDs and date
-
-### Sample Preparation (45 min)
-#### Step 1: Tissue Collection
-```
-⚠️ CRITICAL: Work quickly to prevent DNA degradation
-```
-
-1. **Collect 100-200mg fresh tissue**
-   - Young leaves for best results
-   - Avoid flowers or woody material
-   - ⏱️ **Timing**: Within 1 hour of collection
-
-2. **Flash freeze immediately**
-   - Submerge in liquid nitrogen 30 seconds
-   - Transfer to -80°C if storing (up to 6 months)
-
-<!-- TODO: Add photos of proper tissue collection -->
-
-#### Step 2: Tissue Disruption
-1. **Pre-chill equipment**
-   - Place mortar and pestle in liquid nitrogen
-   - Allow 2-3 minutes for thermal equilibration
-
-2. **Grind tissue to powder**
-   - Add tissue to pre-chilled mortar
-   - Grind with circular motions
-   - Continue until fine powder (3-5 minutes)
-   - ⚠️ **Critical**: Keep tissue frozen throughout
-
-### DNA Extraction (2 hours)
-
-#### Step 3: CTAB Treatment
-1. **Transfer powder to tube**
-   - Use pre-chilled spatula
-   - Add directly to 2mL microcentrifuge tube
-
-2. **Add CTAB buffer**
-   - Volume: 800μL pre-heated CTAB buffer (60°C)
-   - Mix immediately by gentle inversion
-   - ⏱️ **Timing**: Use buffer within 5 minutes of heating
-
-3. **Incubate with mixing**
-   - Temperature: 60°C water bath
-   - Duration: 60 minutes
-   - **Mix every 15 minutes** by gentle inversion (5x)
-
-<!-- FIXME: Verify optimal incubation time with recent literature -->
-
-#### Step 4: Phase Separation
-1. **Cool to room temperature** (5 minutes)
-
-2. **Add chloroform:isoamyl alcohol**
-   - Volume: 800μL (equal volume to CTAB buffer)
-   - ⚠️ **Safety**: Work in chemical hood
-   - Mix by gentle inversion (20x over 2 minutes)
-
-3. **Centrifuge for separation**
-   - Speed: 12,000 RCF
-   - Duration: 15 minutes  
-   - Temperature: 4°C
-
-#### Step 5: DNA Recovery
-1. **Transfer aqueous phase**
-   - Carefully pipette upper aqueous layer
-   - Volume: ~600-700μL (don't disturb interface)
-   - Transfer to new labeled tube
-
-2. **Precipitate DNA**
-   - Add 0.6 volumes cold isopropanol (~400μL)
-   - Mix gently by inversion (10x)
-   - Incubate -20°C for 30 minutes (or overnight)
-
-3. **Pellet DNA**
-   - Centrifuge 12,000 RCF, 15 minutes, 4°C
-   - You should see small white pellet
-
-#### Step 6: DNA Washing and Resuspension
-1. **Wash pellet**
-   - Remove supernatant carefully (don't disturb pellet)
-   - Add 500μL cold 70% ethanol
-   - Centrifuge 12,000 RCF, 5 minutes, 4°C
-
-2. **Dry pellet**
-   - Remove all ethanol with pipette
-   - Air dry 5-10 minutes (don't over-dry)
-   - Pellet should be translucent, not white
-
-3. **Resuspend DNA**
-   - Add 50-100μL TE buffer (pH 8.0)
-   - Incubate 4°C overnight for complete dissolution
-   - Store long-term at -20°C
-
-## ✅ Quality Control
-
-### Quantification Methods
-1. **NanoDrop Spectrophotometer**:
-   - Expected concentration: 50-200 ng/μL
-   - A260/A280 ratio: 1.8-2.0 (pure DNA)
-   - A260/A230 ratio: 2.0-2.2 (no contamination)
-
-2. **Fluorometric quantification** (Qubit):
-   - More accurate for PCR applications
-   - Use dsDNA High Sensitivity assay
-
-### Quality Assessment
-1. **Agarose gel electrophoresis**:
-   - 0.8% agarose gel
-   - Load 5μL DNA + 1μL loading dye
-   - High molecular weight band indicates intact DNA
-   - Smearing suggests degradation
-
-## 🔧 Troubleshooting Guide
-
-| Problem | Possible Cause | Solution |
-|---------|---------------|----------|
-| **Low yield (<10 ng/μL)** | Insufficient starting material | Increase tissue amount to 200mg |
-| | Old tissue samples | Use fresh tissue within 1 hour |
-| | Buffer too cold during extraction | Ensure CTAB buffer stays at 60°C |
-| **Brown/dark coloration** | Polyphenol oxidation | Add 2% PVP to CTAB buffer |
-| | Tissue from woody plants | Use young leaf tissue only |
-| **Low A260/A280 ratio (<1.6)** | Protein contamination | Repeat chloroform extraction |
-| | Incomplete lysis | Extend CTAB incubation to 90 min |
-| **DNA degradation (smearing)** | Over-grinding tissue | Reduce grinding time |
-| | Nuclease activity | Ensure all equipment is nuclease-free |
-
-<!-- REVIEW: Team to test troubleshooting solutions -->
-
-## 📚 References and Resources
-1. Doyle, J. & Doyle, J. (1987) *Phytochemical Bulletin* 19: 11-15
-2. Rogers, S.O. & Bendich, A.J. (1985) *Plant Molecular Biology* 5: 69-76
-3. Lab Safety Manual - Section 4.2 (Chemical Hood Procedures)
-
-## 🔄 Protocol Updates
-- **v2.2** (2024-11-08): Added detailed troubleshooting, safety warnings - Jane Smith
-- **v2.1** (2024-10-15): Updated buffer compositions, timing clarifications - John Doe
-- **v2.0** (2024-09-01): Major revision with quality control section - Lab Team
-- **v1.0** (2024-08-01): Initial protocol - Original Author
-
-## ✅ Validation Log
-| Date | Tester | Tissue Type | Yield | A260/A280 | Notes |
-|------|---------|-------------|-------|-----------|-------|
-| 2024-11-08 | Jane S. | Arabidopsis leaves | 145 ng/μL | 1.89 | Perfect quality |
-| 2024-11-07 | John D. | Rice leaves | 89 ng/μL | 1.85 | Good for PCR |
-| 2024-11-06 | Mary K. | Corn leaves | 201 ng/μL | 1.92 | Excellent yield |
-
----
-*Protocol tested and validated by lab team. For questions, contact jane.smith@university.edu*
-```
-
-**VSCode Features While Editing:**
-
-1. **Live Markdown Preview**:
-   - `Ctrl+K V` for side-by-side preview
-   - See formatted version in real-time
-
-2. **Outline Navigation**:
-   - `Ctrl+Shift+O` to see document outline
-   - Jump to any section quickly
-
-3. **Todo Highlighting**:
-   - TODO, FIXME, REVIEW comments highlighted
-   - Visible in Todo Tree panel
-
-4. **Spell Checking** (if extension installed):
-   - Right-click misspelled words for suggestions
-   - `F6` to run spell check on document
-
-**Step 5: Stage and Review Changes in VSCode**
-
-1. **Source Control Panel** (`Ctrl+Shift+G`):
-   - See modified file: `protocols/DNA-extraction/CTAB-method.md`
-   - `M` indicates modified file
-
-2. **Review changes**:
-   - **Click the filename** to see diff view
-   - **Green lines**: New content
-   - **Red lines**: Deleted content  
-   - **Modified lines**: Show side-by-side comparison
-
-3. **Stage specific changes** (if needed):
-   - **Stage entire file**: Click `+` next to filename
-   - **Stage partial changes**: In diff view, click `+` next to specific hunks
-
-**Step 6: Commit with Good Practices**
-
-1. **Write descriptive commit message**:
-```
-Update CTAB protocol to v2.2: Add comprehensive troubleshooting
-
-Major improvements:
-- Added comprehensive troubleshooting guide
-- Enhanced safety warnings and critical steps
-- Included validation log with test results  
-- Updated timing and temperature specifications
-- Added quality control metrics table
-
-Tested by: Jane Smith, John Doe, Mary Kim
-All tests successful with high-quality DNA yields
-```
-
-2. **Commit the changes**:
-   - `Ctrl+Enter` in Source Control panel
-   - Or click ✓ checkmark button
-
-**Step 7: Push Changes and Create Pull Request**
-
-1. **Push branch to GitHub**:
-   - **Status Bar**: Click sync button
-   - **Source Control**: Click "Publish Branch"
-   - Creates branch on GitHub automatically
-
-2. **Create Pull Request in VSCode**:
-   - **Activity Bar**: Click GitHub icon
-   - **Click**: "Create Pull Request"
-   - **Fill out PR template**:
-   ```markdown
-   ## Protocol Update Summary
-   Updated CTAB DNA extraction protocol to version 2.2
-
-   ## Changes Made
-   - ✅ Added comprehensive troubleshooting section
-   - ✅ Enhanced safety warnings throughout protocol
-   - ✅ Added validation log with recent test results
-   - ✅ Improved timing specifications and critical steps
-   - ✅ Updated quality control metrics
-
-   ## Testing Status
-   - ✅ Tested by 3 lab members
-   - ✅ All quality metrics met expectations
-   - ✅ Troubleshooting solutions verified
-
-   ## Review Checklist
-   - [ ] Protocol steps are clear and detailed
-   - [ ] Safety warnings are prominent
-   - [ ] Troubleshooting covers common issues
-   - [ ] Version history is updated
-   - [ ] References are current and accurate
-
-   ## Additional Notes
-   This update addresses feedback from the last lab meeting about needing better troubleshooting guidance. All suggested improvements have been incorporated.
-   ```
-
-### Example 3: Collaborative Analysis Documentation
-
-#### Scenario: Multi-researcher DNA Barcoding Project
-
-**VSCode Multi-root Workspace Setup**
-
-1. **Create workspace file**:
-   - `File` → `Save Workspace As` → `dna-barcoding-project.code-workspace`
-   - Configure multiple project folders:
-
-```json
-{
-    "folders": [
-        {
-            "name": "📋 Project Management",
-            "path": "./project-docs"
-        },
-        {
-            "name": "🧪 Lab Protocols", 
-            "path": "./protocols"
-        },
-        {
-            "name": "📊 Data Analysis",
-            "path": "./analysis"
-        },
-        {
-            "name": "📝 Manuscripts",
-            "path": "./manuscripts"
-        }
-    ],
-    "settings": {
-        "git.autofetch": true,
-        "files.associations": {
-            "*.md": "markdown"
-        },
-        "todo-tree.general.tags": ["TODO", "FIXME", "REVIEW", "ANALYSIS", "DATA"],
-        "gitlens.blame.inline": true
-    },
-    "extensions": {
-        "recommendations": [
-            "eamodio.gitlens",
-            "yzhang.markdown-all-in-one",
-            "gruntfuggly.todo-tree",
-            "github.vscode-pull-request-github"
-        ]
-    }
-}
-```
-
-**Branch Strategy Visualization in VSCode**
-
-1. **GitLens Graph View**:
-   - `Ctrl+Shift+P` → **"GitLens: Show Graph"**
-   - Visual representation of branch structure:
-   ```
-   main ──────●──────●──────●
-              │       │       │
-   jane-blast ───●──●        │
-                              │
-   john-phylogeny ────────●──●
-                              │
-   mary-stats ────────────────●
-   ```
-
-2. **Create Analysis Branches**:
-   - **Jane's BLAST analysis**: `analysis/blast-species-id`
-   - **John's phylogeny**: `analysis/phylogenetic-tree`
-   - **Mary's statistics**: `analysis/diversity-stats`
-
-#### Jane's BLAST Analysis Workflow
-
-**Step 1: Create and Switch to Analysis Branch**
-1. **Status bar branch switcher**:
-   - Click `main` in bottom-left
-   - **"Create new branch from..."** → `main`
-   - Name: `analysis/blast-species-identification`
-
-2. **Set up analysis structure**:
-```
-analysis/
-├── blast-analysis/
-│   ├── blast-results.md
-│   ├── species-identification.md
-│   └── methodology.md
-└── shared-data/
-    ├── sample-metadata.csv
-    └── sequence-data.md
-```
-
-**Step 2: Document BLAST Analysis**
-
-Create `analysis/blast-analysis/blast-results.md`:
-
-```markdown
-# BLAST Analysis Results - COI Gene Sequences
-
-**Analyst**: Jane Smith  
-**Analysis Period**: November 4-8, 2024  
-**Database Version**: NCBI GenBank nt (accessed Nov 8, 2024)  
-**Branch**: `analysis/blast-species-identification`
-
-## 🔍 Analysis Overview
-Performed BLAST searches on COI sequences from thermal spring samples to identify microbial species present in Yellowstone thermal features.
-
-**Samples Analyzed**: 48 sequences  
-**Analysis Tool**: BLASTn (NCBI online + local)  
-**Database**: GenBank nucleotide collection  
-**Quality Filter**: E-value < 1e-5, Identity > 80%
-
-## ⚙️ Methodology
-
-### BLAST Parameters
-```bash
-# Local BLAST command (when online was slow):
-blastn -query coi_sequences.fasta \
-       -db nt \
-       -out blast_results.xml \
-       -outfmt 5 \
-       -evalue 1e-5 \
-       -max_target_seqs 10 \
-       -word_size 28 \
-       -dust no
-```
-
-### Quality Control Steps
-1. **Sequence validation**:
-   - Minimum length: 300 bp
-   - No ambiguous bases (>5%)
-   - PHRED quality scores >20
-
-2. **BLAST filtering**:
-   - E-value threshold: 1e-5
-   - Minimum identity: 80%
-   - Query coverage: >70%
-
-<!-- TODO: Add automated quality filtering script -->
-
-## 📊 Results Summary
-
-### Species Identification Success Rate
-- ✅ **High confidence** (>95% identity): 23 sequences (48%)
-- ⚠️ **Moderate confidence** (90-95% identity): 15 sequences (31%)  
-- ❓ **Low confidence** (<90% identity): 10 sequences (21%)
-
-### Taxonomic Distribution
-| Phylum | Species Count | Percentage | Notes |
-|--------|---------------|------------|-------|
-| Deinococcus-Thermus | 18 | 37.5% | Dominant thermophiles |
-| Thermotogae | 12 | 25.0% | Hyperthermophiles |
-| Aquificae | 8 | 16.7% | Chemolithotrophs |  
-| Bacteroidetes | 6 | 12.5% | Moderate thermophiles |
-| Unknown/Uncultured | 4 | 8.3% | Novel organisms? |
-
-## 🧬 Detailed Results
-
-### High Confidence Identifications
-
-#### *Thermus* Species Complex
-| Sample | Species | Identity | E-value | Accession | Environment |
-|---------|---------|----------|---------|-----------|-------------|
-| YS-A-001 | *T. aquaticus* | 98.5% | 0.0 | MH123456 | Spring edge, 45°C |
-| YS-A-004 | *T. thermophilus* | 97.8% | 0.0 | CP002775 | Center pool, 72°C |
-| YS-B-003 | *T. scotoductus* | 96.2% | 0.0 | AB056542 | Outflow, 52°C |
-
-**Analysis Notes:**
-- Clear separation of *Thermus* species by temperature preference
-- *T. aquaticus* in moderate temperatures (40-50°C)
-- *T. thermophilus* in high temperatures (70-80°C)
-- Matches expected ecological distribution
-
-#### *Thermotoga* Species
-| Sample | Species | Identity | E-value | Accession | Unique Features |
-|---------|---------|----------|---------|-----------|----------------|
-| YS-C-007 | *T. maritima* | 94.8% | 2e-147 | CP001234 | Unusual for terrestrial spring |
-| YS-C-012 | *T. neapolitana* | 94.2% | 1e-142 | AE000512 | High sulfur tolerance |
-
-<!-- ANALYSIS: Need to investigate T. maritima occurrence in terrestrial system -->
-
-### Moderate Confidence Results
-These require additional validation:
-
-| Sample | Best Match | Identity | E-value | Next Steps |
-|---------|------------|----------|---------|------------|
-| YS-D-008 | *Aquifex aeolicus* | 92.3% | 1e-125 | 16S rRNA verification |
-| YS-D-015 | *Hydrogenobacter* sp. | 90.8% | 3e-118 | Additional gene markers |
-
-### Novel/Unknown Organisms
-Potentially new species requiring further study:
-
-| Sample | Best Match | Identity | Coverage | Research Priority |
-|---------|------------|----------|----------|------------------|
-| YS-E-003 | Uncultured bacterium | 87.2% | 78% | 🔴 High - unique sequence |
-| YS-E-009 | Environmental sample | 85.1% | 82% | 🟡 Medium - similar to known |
-| YS-E-014 | Not classified | 82.4% | 75% | 🟡 Medium - partial sequence |
-
-## 🔬 Ecological Insights
-
-### Temperature-Species Relationships
-```
-Temperature Zones:
-• 40-50°C: T. aquaticus dominant (8/12 samples)
-• 50-65°C: Mixed Thermus/Aquifex (15/20 samples)  
-• 65-80°C: T. thermophilus + novel species (6/10 samples)
-• >80°C: Mostly uncultured organisms (4/6 samples)
-```
-
-### pH Tolerance Patterns
-- **Neutral pH (6.5-7.5)**: Traditional thermophiles
-- **Alkaline pH (8.0-9.5)**: Novel alkalithermophiles  
-- **Extreme alkaline (>9.5)**: Unidentified organisms
-
-## 🚨 Quality Concerns and Follow-up
-
-### Samples Requiring Re-analysis
-<!-- FIXME: These samples had technical issues -->
-
-| Sample | Issue | Resolution |
-|---------|-------|------------|
-| YS-F-001| Low quality sequence | Re-sequence with new primers |
-| YS-F-007 | Possible contamination | Re-extract DNA, repeat PCR |
-| YS-F-012 | Chimeric sequence | Use chimera detection tools |
-
-### Database Limitations
-- Many thermal spring organisms remain uncultured
-- GenBank bias toward model organisms
-- Need specialized thermophile databases
-
-<!-- REVIEW: Team meeting Nov 15 to discuss novel findings -->
-
-## 📈 Next Steps
-
-### Immediate Actions (This Week)
-- [ ] **John**: Incorporate sequences into phylogenetic analysis
-- [ ] **Mary**: Statistical analysis of diversity patterns
-- [ ] **Jane**: Re-analyze problematic sequences
-- [ ] **Team**: Literature review of novel findings
-
-### Future Research Directions
-1. **Novel species characterization**:
-   - 16S rRNA gene sequencing
-   - Whole genome sequencing (if culturable)
-   - Physiological characterization
-
-2. **Ecological studies**:
-   - Seasonal variation sampling
-   - Biogeochemical correlations
-   - Community structure analysis
-
-## 📚 References and Resources
-1. Altschul, S.F. et al. (1990) *J. Mol. Biol.* 215: 403-410
-2. NCBI BLAST Database: https://blast.ncbi.nlm.nih.gov/
-3. Hugenholtz, P. et al. (2021) *Nat. Rev. Microbiol.* 19: 499-515
-
----
-**Analysis Status**: ✅ Complete - Ready for team review  
-**Data Location**: `shared-drive/blast-results/2024-11-08/`  
-**Questions**: Contact jane.smith@university.edu
-```
-
-**Step 3: VSCode Collaboration Features**
-
-1. **Live Share for Real-time Discussion**:
-   - `Ctrl+Shift+P` → **"Live Share: Start Collaboration Session"**
-   - Share with John and Mary for immediate feedback
-   - Both can see and edit the analysis simultaneously
-
-2. **Commenting and Review**:
-   - **Add comments**: Right-click in editor → **"Add Comment"**
-   - **Resolve discussions**: Mark as resolved when addressed
-   - **Suggest changes**: Highlight text and suggest alternatives
-
-**Step 4: Commit Analysis Results**
-
-1. **Stage changes**:
-   - Source Control panel shows modified files
-   - Review diff to ensure all changes are intentional
-   - Stage files with `+` button
-
-2. **Comprehensive commit message**:
-```
-Complete BLAST analysis of COI sequences
-
-Results Summary:
-- Analyzed 48 samples from Yellowstone thermal springs  
-- Identified 23 high-confidence species matches (48%)
-- Found 4 potentially novel thermophilic organisms
-- Documented clear temperature-species relationships
-
-Key Findings:
-- Thermus species dominate moderate temperatures (40-65°C)
-- Novel alkalithermophiles in extreme conditions (>80°C)
-- Strong correlation between pH and species diversity
-
-Next Steps:
-- Coordinate with John for phylogenetic analysis
-- Share data with Mary for statistical analysis
-- Schedule team meeting to discuss novel findings
-
-Data Quality: All sequences passed QC filters
-Analysis Tools: BLAST+ 2.14.0, NCBI nt database
-```
-
-3. **Push and create PR**:
-   - Push branch: **"Publish Branch"** in Source Control
-   - GitHub extension: Create pull request directly in VSCode
-
----
-
-## Collaboration Workflows with VSCode
-
-### Workflow 1: Small Lab Team (2-5 people) - VSCode Focused
-
-#### Initial Setup in VSCode
-
-**Team Lead Sets Up Repository:**
-1. **Create new repository**: `Ctrl+Shift+P` → "Git: Initialize Repository"
-2. **Add team workspace configuration**:
-```json
-// .vscode/settings.json
-{
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "files.autoSave": "afterDelay",
-    "markdown.preview.breaks": true,
-    "todo-tree.general.tags": ["TODO", "FIXME", "REVIEW"],
-    "gitlens.blame.inline": true
-}
-```
-
-3. **Create team README**:
-```markdown
-# Lab Protocols Repository
-
-## VSCode Setup for Team
-1. Install required extensions:
-   - GitLens
-   - Markdown All in One  
-   - Todo Tree
-   - Live Share Extension Pack
-
-2. Clone repository: 
-   ```bash
-   git clone git@github.com:labname/protocols.git
-   ```
-
-3. Open in VSCode and install recommended extensions when prompted
-
-## Workflow
-- Pull changes every morning: `Ctrl+Shift+P` → "Git: Pull"
-- Create branches for major changes: Click branch name → "Create new branch" 
-- Commit frequently with clear messages
-- Use Live Share for real-time collaboration
-
-## Branch Naming Convention
-- `protocol-updates/protocol-name`
-- `analysis/dataset-name`  
-- `docs/section-name`
-```
-
-#### Daily VSCode Workflow
-
-**Morning Routine:**
-1. **Open VSCode** to your protocol repository
-2. **Sync changes**: Status bar "Sync" button or `Ctrl+Shift+P` → "Git: Pull"
-3. **Check notifications**: VSCode shows if conflicts need resolution
-
-**Working on Protocols:**
-1. **Create feature branch**: 
-   - Click branch name in status bar
-   - **"Create new branch from..."** 
-   - Name: `protocol-updates/dna-extraction-v3`
-
-2. **Edit files** with VSCode's markdown features:
-   - Live preview: `Ctrl+Shift+V`
-   - Outline navigation: `Ctrl+Shift+O`
-   - Search across files: `Ctrl+Shift+F`
-
-3. **Track changes visually**:
-   - Modified files show `M` in Explorer
-   - Gutter shows additions (green) and deletions (red)
-   - GitLens shows inline blame information
-
-**End of Day:**
-1. **Review changes**: Source Control panel (`Ctrl+Shift+G`)
-2. **Stage files**: Click `+` next to changed files
-3. **Commit**: Write message and `Ctrl+Enter`
-4. **Push**: Click "Sync Changes" or publish branch
-
-#### VSCode Team Collaboration Features
-
-**Real-time Collaboration:**
-```markdown
-## When to Use Live Share:
-- Editing protocols together
-- Reviewing analysis results
-- Troubleshooting Git conflicts
-- Training new team members
-
-## Start Live Share Session:
-1. Ctrl+Shift+P → "Live Share: Start Collaboration Session"  
-2. Share link via lab Slack/email
-3. Collaborators join and can edit simultaneously
-4. Share terminal for Git commands if needed
-```
-
-**Pull Request Review in VSCode:**
-1. Install **GitHub Pull Requests** extension  
-2. **View PRs**: Activity bar → GitHub icon
-3. **Review changes**: See diff, add comments, approve/request changes
-4. **Merge from VSCode**: No need to switch to browser
-
-### Workflow 2: Large Research Collaboration - VSCode Integration
-
-#### Multi-Repository Management
-
-**VSCode Multi-root Workspaces:**
-```json
-// research-collaboration.code-workspace
-{
-    "folders": [
-        {
-            "name": "Main Protocol Repo",
-            "path": "./bioinfo-protocols"
-        },
-        {
-            "name": "Analysis Scripts",  
-            "path": "./analysis-pipeline"
-        },
-        {
-            "name": "Shared Documentation",
-            "path": "./project-docs"
-        }
-    ],
-    "settings": {
-        "git.autofetch": true,
-        "git.fetchOnPull": true
-    }
-}
-```
 
 #### Fork-based Contribution Workflow
 
@@ -2126,22 +1474,6 @@ git push origin main
 - In Activity Bar → GitHub → "Create Pull Request"  
 - Fill details directly in VSCode
 - Link to issues if applicable
-
-#### Advanced VSCode Collaboration
-
-**Code Review in VSCode:**
-```markdown
-## Review Checklist Template
-Create `.github/PULL_REQUEST_TEMPLATE.md`:
-
-## Protocol Review Checklist
-- [ ] All steps clearly numbered and described
-- [ ] Safety warnings included where appropriate  
-- [ ] Materials list complete with quantities
-- [ ] Expected results/troubleshooting included
-- [ ] References cited properly
-- [ ] Formatting consistent with lab style
-
 ## Testing (if applicable)
 - [ ] Protocol tested in lab
 - [ ] Results match expected outcomes
@@ -2153,79 +1485,19 @@ Create `.github/PULL_REQUEST_TEMPLATE.md`:
 - [ ] Related protocols cross-referenced
 ```
 
-**Branch Protection and Reviews:**
-```json
-// .vscode/settings.json for reviewers
-{
-    "githubPullRequests.defaultMergeMethod": "squash",
-    "githubPullRequests.pullBranch": "never",
-    "git.showPushSuccessNotification": true,
-    "gitlens.codeLens.enabled": true,
-    "gitlens.currentLine.enabled": true
-}
-```
-
-### Workflow 3: Open Science Projects - VSCode Community Features
-
-#### Community Contribution Setup
-
-**VSCode Configuration for Open Source:**
-```json
-// .vscode/settings.json
-{
-    "git.inputValidation": "always",
-    "git.branchProtection": ["main", "master"],
-    "markdown.validate.enabled": true,
-    "markdown.validate.fileLinks": "error",
-    "spellright.language": ["en"],
-    "spellright.documentTypes": ["markdown", "plaintext"]
-}
-```
-
-**Extensions for Community Projects:**
-- **Spell Right**: Spell checking for protocols
-- **Markdown Lint**: Ensure consistent formatting  
-- **GitHub Actions**: View CI/CD status
-- **GitLens**: Track contributions and history
-
-#### Documentation Standards
-
-**Contributing Guidelines Template:**
-```markdown
-# Contributing to Community Protocols
-
-## VSCode Setup
-1. Fork and clone the repository
-2. Install recommended VSCode extensions (prompt will appear)
-3. Open command palette: `Ctrl+Shift+P`
-4. Run: "Preferences: Open Workspace Settings"
-5. Verify spell-check and markdown validation enabled
-
-## Adding New Protocols
-1. Create branch: `add-protocol/technique-name`  
-2. Use protocol template in `templates/protocol-template.md`
-3. Preview markdown: `Ctrl+Shift+V`
-4. Run spell-check: `F6` (with Spell Right extension)
-5. Validate links: `Ctrl+Shift+P` → "Markdown: Validate Links"
-
-## Quality Standards
-- All protocols must include safety warnings
-- Use consistent formatting (check with Markdown Lint)
-- Include troubleshooting section
-- Add references section
-- Test protocol before submitting (if possible)
-```
-
-**Community Review Process:**
-1. **Draft PR in VSCode**: Use GitHub PR extension
-2. **Request community review**: Tag relevant experts
-3. **Address feedback**: Use VSCode's suggestion interface  
-4. **Final review**: Maintainers approve via GitLens integration
-
 ---
 
 ## Troubleshooting Common Issues in VSCode
+#### 🚨 Git Problem Solving in VSCode
 
+| Problem | VSCode Solution | Command Alternative |
+|---------|-----------------|-------------------|
+| **Authentication Failed** | Command Palette → "Git: Clone" → Enter credentials | Set up SSH keys |
+| **Merge Conflicts** | Click conflicted file → Use merge editor | Manual editing |
+| **Uncommitted Changes** | Source Control → Stash changes | `git stash` |
+| **Wrong Branch** | Status bar → Switch branch | `git checkout [branch]` |
+| **Undo Last Commit** | Command Palette → "Git: Undo Last Commit" | `git reset --soft HEAD~1` |
+| **Discard Changes** | Source Control → Right-click file → "Discard Changes" | `git checkout -- [file]` |
 ### Problem 1: VSCode Not Showing Git Changes
 
 #### Symptoms:
@@ -2552,188 +1824,6 @@ rm -rf .vscode/
 1. **Settings** → **Files: Watcher Exclude**
 2. **Add patterns** for data directories
 3. **Restart VSCode** for changes to take effect
-
----
-
-## Quick Reference Guide
-
-### VSCode Git Cheat Sheet
-
-#### 🎯 Essential VSCode Git Shortcuts
-
-| Action | Shortcut | Alternative Method |
-|--------|----------|-------------------|
-| **Open Source Control** | `Ctrl+Shift+G` | Activity Bar → Source Control icon |
-| **Command Palette** | `Ctrl+Shift+P` | View → Command Palette |
-| **Quick Open** | `Ctrl+P` | File → Quick Open |
-| **Git Commands** | `Ctrl+Shift+P` → "Git:" | Source Control → "..." menu |
-| **Stage All Changes** | `Ctrl+Shift+A` | Source Control → "+" next to Changes |
-| **Commit** | `Ctrl+Enter` | Source Control → ✓ checkmark |
-| **Push/Pull** | `Ctrl+Shift+P` → "Git: Push/Pull" | Status bar sync button |
-
-#### 📁 VSCode Panel Navigation
-
-| Panel | Shortcut | Usage |
-|--------|----------|-------|
-| **Explorer** | `Ctrl+Shift+E` | File and folder management |
-| **Search** | `Ctrl+Shift+F` | Find across all files |
-| **Source Control** | `Ctrl+Shift+G` | Git operations |
-| **Extensions** | `Ctrl+Shift+X` | Install/manage extensions |
-| **Terminal** | `Ctrl+Shift+`` | Command line access |
-
-#### 🔄 Git Workflow in VSCode
-
-| Task | VSCode Method | Command |
-|------|---------------|---------|
-| **Initialize Repository** | Command Palette → "Git: Initialize Repository" | `git init` |
-| **Clone Repository** | Command Palette → "Git: Clone" | `git clone [url]` |
-| **Create Branch** | Status bar branch → "Create new branch" | `git checkout -b [name]` |
-| **Switch Branch** | Status bar branch → Select branch | `git checkout [branch]` |
-| **Stage Changes** | Source Control → Click `+` | `git add [file]` |
-| **Unstage Changes** | Source Control → Click `-` | `git reset [file]` |
-| **Commit Changes** | Source Control → Write message + `Ctrl+Enter` | `git commit -m "message"` |
-| **Push Changes** | Source Control → "Sync Changes" | `git push` |
-| **Pull Changes** | Source Control → "..." → "Pull" | `git pull` |
-
-#### 🔍 Viewing Git Information
-
-| Information | VSCode Location | Description |
-|-------------|-----------------|-------------|
-| **Current Branch** | Status bar (bottom-left) | Shows active branch name |
-| **File Status** | Explorer panel | M=Modified, U=Untracked, D=Deleted |
-| **Pending Changes** | Source Control badge | Number of uncommitted changes |
-| **Git History** | GitLens → File History | Commit history for current file |
-| **Blame Information** | GitLens inline annotations | Who changed each line |
-| **Repository Status** | Source Control panel | All changed files |
-
-#### 🌟 GitLens Features (Extension)
-
-| Feature | Access Method | Description |
-|---------|---------------|-------------|
-| **Blame Annotations** | Inline in editor | See author and date for each line |
-| **File History** | Right-click file → "GitLens: Show File History" | Visual commit history |
-| **Repository Graph** | Command Palette → "GitLens: Show Graph" | Visual branch structure |
-| **Compare Changes** | Command Palette → "GitLens: Compare References" | Compare branches/commits |
-| **Search Commits** | GitLens sidebar → Search | Find commits by message/author |
-
-#### 📝 Markdown Features for Documentation
-
-| Feature | Shortcut | Usage |
-|---------|----------|-------|
-| **Preview Markdown** | `Ctrl+Shift+V` | View formatted version |
-| **Side-by-side Preview** | `Ctrl+K V` | Edit and preview simultaneously |
-| **Document Outline** | `Ctrl+Shift+O` | Navigate to sections quickly |
-| **Bold Text** | `Ctrl+B` | **Bold formatting** |
-| **Italic Text** | `Ctrl+I` | *Italic formatting* |
-| **Insert Link** | `Ctrl+K` | [Link text](URL) |
-
-#### 🔧 Useful VSCode Settings for Git
-
-```json
-{
-    // Git settings
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "git.suggestSmartCommit": true,
-    "git.showPushSuccessNotification": true,
-    
-    // GitLens settings
-    "gitlens.blame.inline": true,
-    "gitlens.currentLine.enabled": true,
-    "gitlens.codeLens.enabled": true,
-    
-    // File management
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 1000,
-    
-    // Markdown settings
-    "markdown.preview.breaks": true,
-    "markdown.validate.enabled": true
-}
-```
-
-#### 🚨 Git Problem Solving in VSCode
-
-| Problem | VSCode Solution | Command Alternative |
-|---------|-----------------|-------------------|
-| **Authentication Failed** | Command Palette → "Git: Clone" → Enter credentials | Set up SSH keys |
-| **Merge Conflicts** | Click conflicted file → Use merge editor | Manual editing |
-| **Uncommitted Changes** | Source Control → Stash changes | `git stash` |
-| **Wrong Branch** | Status bar → Switch branch | `git checkout [branch]` |
-| **Undo Last Commit** | Command Palette → "Git: Undo Last Commit" | `git reset --soft HEAD~1` |
-| **Discard Changes** | Source Control → Right-click file → "Discard Changes" | `git checkout -- [file]` |
-
-#### 📊 GitHub Integration (Extension)
-
-| Feature | Access Method | Description |
-|---------|---------------|-------------|
-| **View Pull Requests** | Activity Bar → GitHub icon | See open PRs |
-| **Create Pull Request** | Source Control → "Create Pull Request" | Direct PR creation |
-| **Review Changes** | GitHub panel → Select PR | Review and comment |
-| **View Issues** | GitHub panel → Issues tab | See assigned issues |
-| **Merge PR** | GitHub panel → Merge button | Complete PR workflow |
-
-#### 🎨 VSCode Themes for Git Work
-
-| Theme | Description | Best For |
-|-------|-------------|----------|
-| **Dark+ (default)** | High contrast, easy on eyes | Long coding sessions |
-| **Light+ (default)** | Clean, professional look | Documentation work |
-| **GitHub Dark** | Matches GitHub interface | Consistent experience |
-| **Monokai** | Popular programmer theme | Code and markdown |
-
-#### 🔍 Advanced Search and Navigation
-
-| Feature | Shortcut | Usage |
-|---------|----------|-------|
-| **Search in Files** | `Ctrl+Shift+F` | Find text across repository |
-| **Go to File** | `Ctrl+P` | Quick file opening |
-| **Go to Symbol** | `Ctrl+Shift+O` | Navigate to headings in markdown |
-| **Go to Line** | `Ctrl+G` | Jump to specific line number |
-| **Find and Replace** | `Ctrl+H` | Replace text in current file |
-
-#### 📱 VSCode Git Status Indicators
-
-| Indicator | Meaning | Location |
-|-----------|---------|----------|
-| **M** | Modified file | File Explorer |
-| **U** | Untracked file | File Explorer |
-| **D** | Deleted file | File Explorer |
-| **A** | Added file | File Explorer |
-| **C** | Conflicted file | Source Control |
-| **!** | Ignored file | File Explorer |
-| **Number badge** | Pending changes count | Activity Bar icon |
-
-### Command Line Cheat Sheet
-| Command | Purpose | Example |
-|---------|---------|---------|
-| `git status` | Check what's changed | `git status` |
-| `git add` | Stage changes | `git add protocol.md` |
-| `git commit` | Save changes | `git commit -m "Add PCR protocol"` |
-| `git push` | Upload to GitHub | `git push` |
-| `git pull` | Download from GitHub | `git pull` |
-| `git branch` | List branches | `git branch` |
-| `git checkout` | Switch branches | `git checkout -b new-feature` |
-| `git merge` | Combine branches | `git merge feature-branch` |
-
-### SSH Quick Reference
-| Action | Command |
-|--------|---------|
-| Generate SSH key | `ssh-keygen -t ed25519 -C "email@uni.edu"` |
-| Test SSH | `ssh -T git@github.com` |
-| Clone with SSH | `git clone git@github.com:user/repo.git` |
-
-### GitHub Desktop Cheat Sheet
-| Action | How To |
-|--------|--------|
-| See changes | Changes tab shows modified files |
-| Stage files | Files are auto-staged |
-| Commit | Write message → Commit to main |
-| Push | Push origin button |
-| Pull | Fetch origin button |
-| Branch | Current branch dropdown → New branch |
-| Merge | Create pull request on GitHub |
 
 ---
 
