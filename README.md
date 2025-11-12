@@ -1,4 +1,4 @@
-# 📚 Bioinformatics Git & GitHub Collaboration Tutorial for Beginners
+# 📚 Bioinformatics Git & GitHub Collaboration Tutorial
 
 ## 🎯 What You'll Learn
 This tutorial will teach you how to use Git as a version control tool for your bioinformatics projects, even if you have no programming experience. You'll learn three different ways to use Git:
@@ -189,7 +189,7 @@ git status
 4. **Open cloned repository**: VSCode will prompt to open the new folder
 
 #### Step 3: Start Adding Your Content
-
+**Command Line:**
 **Add directory structure:**
 ```bash
 # Create organized folder structure
@@ -222,6 +222,55 @@ git commit -m "Add initial directory structure and DNA extraction protocol"
 git push
 ```
 
+**VSCode Method:**
+**Add directory structure:**
+### Step 1: Create the Folder Structure
+
+1. **Open your project folder in VSCode**
+2. **In the File Explorer panel** (left sidebar), click the **New Folder** icon three separate times to create your directories
+3. **Name them**:
+   - `protocols`
+   - `data-analysis`
+   - `manuscripts`
+
+### Step 2: Create and Populate the Protocol File
+
+1. **In the File Explorer**, right-click on your new `protocols` folder and select **"New File"**
+2. **Name the file** `dna-extraction.md` and press Enter
+3. **The new, empty file will open in the editor**. Copy and paste the following text into it:
+
+```markdown
+# DNA Extraction Protocol
+
+## Overview
+Standard protocol for extracting high-quality genomic DNA from biological samples.
+
+## Materials
+- Sample tubes
+- Extraction buffer
+- Centrifuge
+
+## Protocol Steps
+1. Collect sample in sterile tube
+2. Add extraction buffer
+3. Process according to manufacturer instructions
+```
+
+4. **Save the file** (`Ctrl+S` or `Cmd+S`)
+
+### Step 3: Commit and Push Your Additions
+
+1. **Go to the Source Control view** (the icon that looks like a branching fork on the left sidebar)
+2. **You will see** your new folders and the file listed under "Changes"
+3. **Hover over the Changes title bar** and click the **`+` (Stage All Changes)** icon. This will move all the new items to the "Staged Changes" area, preparing them for the commit
+4. **In the text box at the top**, type your commit message:
+   ```
+   Add initial directory structure and DNA extraction protocol
+   ```
+5. **Click the ✓ (Commit) icon** to save the changes to your local repository
+6. **Finally, click the Sync Changes button** (the circular arrows 🔄) in the bottom status bar to push your commit to GitHub
+
+**Result**: Your repository now has an organized structure with your first protocol file, and all changes are saved both locally and on GitHub.
 ---
 
 ### Method 3: Convert Existing Folder to Git Repository
@@ -1474,16 +1523,6 @@ git push origin main
 - In Activity Bar → GitHub → "Create Pull Request"  
 - Fill details directly in VSCode
 - Link to issues if applicable
-## Testing (if applicable)
-- [ ] Protocol tested in lab
-- [ ] Results match expected outcomes
-- [ ] Edge cases considered
-
-## Documentation  
-- [ ] Version history updated
-- [ ] README updated if needed
-- [ ] Related protocols cross-referenced
-```
 
 ---
 
