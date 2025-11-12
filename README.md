@@ -1015,8 +1015,6 @@ Making your own copy of someone's repository on GitHub (for contributing to open
 | **Italic Text** | `Ctrl+I` | *Italic formatting* |
 | **Insert Link** | `Ctrl+K` | [Link text](URL) |
 
-
-
 #### 📊 GitHub Integration (Extension)
 
 | Feature | Access Method | Description |
@@ -1026,15 +1024,6 @@ Making your own copy of someone's repository on GitHub (for contributing to open
 | **Review Changes** | GitHub panel → Select PR | Review and comment |
 | **View Issues** | GitHub panel → Issues tab | See assigned issues |
 | **Merge PR** | GitHub panel → Merge button | Complete PR workflow |
-
-#### 🎨 VSCode Themes for Git Work
-
-| Theme | Description | Best For |
-|-------|-------------|----------|
-| **Dark+ (default)** | High contrast, easy on eyes | Long coding sessions |
-| **Light+ (default)** | Clean, professional look | Documentation work |
-| **GitHub Dark** | Matches GitHub interface | Consistent experience |
-| **Monokai** | Popular programmer theme | Code and markdown |
 
 #### 🔍 Advanced Search and Navigation
 
